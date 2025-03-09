@@ -1,0 +1,19 @@
+# helix test -f smartbuzz.yaml --rsync ./pdfs
+
+apiVersion: app.aispec.org/v1alpha1
+kind: AIApp
+metadata:
+  name: smartbuzz
+spec:
+  assistants:
+    - model: microsoft/phi-4
+      knowledge:
+        - name: pdfs
+          source:
+            filestore:
+              path: pdfs
+      tests:
+        - name: smartbuzz
+          steps:
+            - prompt: "what is the smartbuzz technique?"
+              expected_output: "The answer should describe the smartbuzz technique, possibly referencing thematic investing and/or NLP techniques. If it says anything about SmartBuzz not appearing in the provided context, then fail the test."
