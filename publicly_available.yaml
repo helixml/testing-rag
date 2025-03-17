@@ -1,0 +1,40 @@
+# helix test -f publicly_available.yaml --rsync ./pdfs2
+
+apiVersion: app.aispec.org/v1alpha1
+kind: AIApp
+metadata:
+  name: Failure tests for Helix
+spec:
+  assistants:
+    - name: Default Assistant
+      model: microsoft/phi-4
+      type: text
+      system_prompt: You are a financial expert who only replies with the information
+        from the provided context. If not relevant information was provided in
+        the context, indicate that.
+      knowledge:
+        - name: publicly_available
+          source:
+            filestore:
+              path: publicly_available
+      tests:
+      - name: Test 1
+        steps:
+          - prompt: What preprocessing technique helps standardize word forms to their base or dictionary form?
+            expected_output: A correct answer should identify lemmatization as the technique that reduces word inflection forms to their common base form.
+      - name: Test 2
+        steps:
+          - prompt: What preprocessing technique mentioned in the methodology helps standardize word forms to their base or dictionary form?
+            expected_output: A correct answer should identify lemmatization as the technique that reduces word inflection forms to their common base form.
+      - name: Test 3
+        steps:
+          - prompt: How does the performance of the strategy differ between small-cap and large-cap companies, and what explanation could there be for this difference?
+            expected_output: A correct answer should state that performance is stronger in the small-cap space compared to the large-cap segment, and explain that this is because large-cap companies are more widely followed by analysts and receive more news coverage, so information is more quickly incorporated into their stock prices.
+      - name: Test 4
+        steps:
+          - prompt: What specific preprocessing steps can we employ before calculating textual similarity between documents?
+            expected_output: A correct answer must list all four preprocessing steps - 1) tag removal, 2) numerical value removal, 3) punctuation removal, and 4) lemmatization. Missing any of these steps or adding incorrect steps would make the answer incomplete or incorrect.
+      - name: Test 5
+        steps:
+          - prompt: How can we measure changes in risk disclosures?
+            expected_output: A correct answer should identify - Minimum Edit Distance, Jaccard Similarity, and Cosine Similarity.
