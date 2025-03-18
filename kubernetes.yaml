@@ -1,0 +1,19 @@
+# helix test -f kubernetes.yaml --rsync ./k8s
+
+apiVersion: app.aispec.org/v1alpha1
+kind: AIApp
+metadata:
+  name: kubernetes
+spec:
+  assistants:
+    - model: microsoft/phi-4
+      knowledge:
+        - name: pdfs
+          source:
+            filestore:
+              path: pdfs
+      tests:
+        - name: kubernetes
+          steps:
+            - prompt: "how can you attach metadata to objects?"
+              expected_output: "Should describe how you can use labels or annotations. Should refernece a specific source file"
