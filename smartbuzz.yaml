@@ -6,7 +6,8 @@ metadata:
   name: smartbuzz
 spec:
   assistants:
-    - model: microsoft/phi-4
+    - model: meta-llama/Llama-3.3-70B-Instruct-Turbo
+      provider: together
       knowledge:
         - name: pdfs
           source:
