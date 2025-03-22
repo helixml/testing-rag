@@ -3,7 +3,7 @@
 apiVersion: app.aispec.org/v1alpha1
 kind: AIApp
 metadata:
-  name: smartbuzz
+  name: SmartBuzz App
 spec:
   assistants:
     - model: meta-llama/Llama-3.3-70B-Instruct-Turbo
