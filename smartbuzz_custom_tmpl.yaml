@@ -15,6 +15,7 @@ spec:
             filestore:
               path: pdfs
           rag_settings:
+            results_count: 10
             prompt_template: |
               {{- if or .RagResults .KnowledgeResults }}
               We have found the following context you may refer to in your answer:

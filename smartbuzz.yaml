@@ -13,6 +13,8 @@ spec:
           source:
             filestore:
               path: pdfs
+          rag_settings:
+            results_count: 10
       tests:
         - name: smartbuzz
           steps:
