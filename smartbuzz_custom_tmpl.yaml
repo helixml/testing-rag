@@ -28,7 +28,9 @@ spec:
                   {{ .DocumentID }}
                 </document_id>
                 <content>
+                  ### START OF CONTENT FOR DOCUMENT {{ .DocumentID }} ###
                   {{ .Content }}
+                  ### END OF CONTENT FOR DOCUMENT {{ .DocumentID }} ###
                 </content>
               </chunk>
               {{- end }}
@@ -48,7 +50,9 @@ spec:
                 </description>
                 {{- end }}
                 <content>
+                  ### START OF CONTENT FOR DOCUMENT {{ .DocumentID }} ###
                   {{ .Content }}
+                  ### END OF CONTENT FOR DOCUMENT {{ .DocumentID }} ###
                 </content>
               </chunk>
               {{- end }}
@@ -63,6 +67,8 @@ spec:
               2. In the excerpts XML section below the body of your answer, provide a representative quote from each cited document, but only one quote per document (i.e. document_id).  They must be EXACT QUOTES.  If there are multiple quotes (maybe because there are multiple inline references, or because multiple chunks come from the same document), choose the best or most general quote that captures what the document is about.
 
               IMPORTANT: When referencing documents, always use EXACTLY the document_id values provided above. DO NOT extract or use page IDs from URLs within the content. Always provide references in the body of your answer in the format '[DOC_ID:DocumentID]'. For example, "The answer is 42 [DOC_ID:f6962c8007]." NOT "[DOC_ID:123456]" where 123456 might be a page ID in a URL.
+              Be careful not to mis-spell the document_id. Double check it to ensure you have copied it accurately.
+              Be EXTREMELY careful to quote from the correct document. I have included "### START OF CONTENT FOR DOCUMENT XXX ###" and "### END OF CONTENT FOR DOCUMENT XXX ###" tags to help you keep track of which document each chunk of context is drawn from. DO NOT MIS-ATTRIBUTE QUOTES TO THE WRONG DOCUMENTS.
 
               Always provide references in the body of your answer, but not too many. Don't repeat the same reference many times.
               Users like it if the format of the answer is structured, for example using a numbered list rather than just a big blob of text. Where there are many concepts to communicate, consider using a numbered list.
