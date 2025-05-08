@@ -1,0 +1,24 @@
+# helix apply -f vision.yaml --rsync ./pdfs3
+# or,
+# helix test -f vision.yaml --rsync ./pdfs3
+
+apiVersion: app.aispec.org/v1alpha1
+kind: AIApp
+metadata:
+  name: Vision Demo - News Based Stock Sentiment
+spec:
+  assistants:
+    - model: Qwen/Qwen2.5-VL-7B-Instruct
+      provider: openai
+      knowledge:
+        - name: pdfs
+          rag_settings:
+            enable_vision: true
+          source:
+            filestore:
+              path: pdfs
+      tests:
+        - name: table screenshot lookup
+          steps:
+            - prompt: "what is the % price change correlation in the energy sector?"
+              expected_output: "The correct answer is 0.35"
